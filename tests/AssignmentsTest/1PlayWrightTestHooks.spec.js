@@ -17,12 +17,33 @@ await page.getByRole('button', { name: 'Login' }).click();
 
 /*getByText('Quick Launch')	Find text containing Quick Launch
 getByText('Quick Launch', { exact: true })	Find text exactly equal to Quick Launch */
+
+
 await expect(page.getByText('Time at Work', { exact: true })).toBeVisible();
 await expect(page.getByText('My Actions', { exact: true })).toBeVisible();
 await expect(page.getByText('Quick Launch', { exact: true })).toBeVisible();
 await expect(page.getByText('Buzz Latest Posts', { exact: true })).toBeVisible();
 await expect(page.getByText('Employees on Leave Today', { exact: true })).toBeVisible();
 await expect(page.getByText('Employee Distribution by Sub Unit', { exact: true })).toBeVisible();
+});
+
+
+
+test.describe("Verify OrangeHRM Dashboard Elements Are Visible Individually", () =>{
+test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+    await page.getByPlaceholder('username').fill('Admin');
+    await page.getByPlaceholder('password').fill('admin123');
+    await page.getByRole('button', { name: 'Login' }).click();
+});
+
+    test('Verify "Time at Work" is visible', async ({ page }) => {
+        await expect(page.getByText('Time at Work', { exact: true })).toBeVisible();
+ }); 
+    test('Verify "My actions" is visible', async ({ page }) => {
+        await expect(page.getByText('My Actions', {exact: true})).toBeVisible();
+
+    });
 });
 
 
