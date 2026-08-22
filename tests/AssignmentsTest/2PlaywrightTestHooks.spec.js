@@ -5,7 +5,7 @@
  for the login steps.*/
 
 import {test, expect} from "@playwright/test";
-test.describe("Playwright Test Hooks", () => {
+test.describe("Validate OrangeHRM dashboard Menu Items", () => {
     test.beforeEach(async ({page}) => {
         await page.goto('/');
         await page.getByPlaceholder('username').fill('Admin');
